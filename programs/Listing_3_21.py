@@ -1,0 +1,26 @@
+# IconButton_1
+import flet as ft
+
+def main(page: ft.Page):
+    page.title = "IconButton"
+
+    def button_clicked(e: ft.Event[ft.IconButton]):
+        button.data += 1
+        message.value = f"Кнопка нажата: {button.data} раз(а)"
+        message.update()
+
+    page.add(
+        ft.SafeArea(
+            content=ft.Column(
+                controls=[button := ft.IconButton(
+                    key="handling_clicks_icon_button",
+                    icon=ft.Icons.PLAY_CIRCLE_FILL_OUTLINED,
+                    data=0,
+                    on_click=button_clicked,),
+                    message := ft.Text(),],
+            ),
+        )
+    )
+
+if __name__ == "__main__":
+    ft.run(main, view=ft.AppView.WEB_BROWSER)
