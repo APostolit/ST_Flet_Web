@@ -1,0 +1,21 @@
+# Color_SlidePicker
+import flet as ft
+from flet_color_pickers import ColorModel, SlidePicker
+
+def main(page: ft.Page):
+    page.title = "SlidePicker"
+    page.padding = 20
+
+    def on_color_change(e: ft.ControlEvent):
+        print(f"Выбран цвет: {e.data}")
+
+    picker = SlidePicker(
+        color="#0000ff",
+        color_model=ColorModel.RGB,
+        indicator_border_radius=ft.BorderRadius.all(5),
+        on_color_change=on_color_change,)
+
+    page.add(ft.SafeArea(content=picker))
+
+if __name__ == "__main__":
+    ft.run(main, view=ft.AppView.WEB_BROWSER)
